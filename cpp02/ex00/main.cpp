@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 12:24:34 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/14 12:24:35 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/02/20 10:55:21 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/02/20 16:12:58 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-void	Zombie::announce( void )
+int	main(void)
 {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+	Fixed	a;
+	Fixed	c;
+	Fixed b(a);
 
-Zombie::Zombie(std::string Name)
-{
-	std::cout << "Constructor called" << std::endl;
-	this->name = Name;
-}
+	c = b;
 
-Zombie::~Zombie()
-{
-	std::cout << "Destructor called" << std::endl;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+
+	return 0;
 }

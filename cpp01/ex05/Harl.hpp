@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 12:24:34 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/14 12:24:35 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/02/14 12:24:01 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/02/14 15:33:39 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-void	Zombie::announce( void )
-{
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#include <string>
+#include <iostream>
 
-Zombie::Zombie(std::string Name)
+class Harl
 {
-	std::cout << "Constructor called" << std::endl;
-	this->name = Name;
-}
+private:
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
 
-Zombie::~Zombie()
-{
-	std::cout << "Destructor called" << std::endl;
-}
+public:
+	void complain( std::string level );
+	Harl();
+	~Harl();
+};
+

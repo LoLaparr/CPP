@@ -90,11 +90,13 @@ void	PhoneBook::search_contact() const
 	if (contact_number_2 < 0 || contact_number_2 > 7)
 		std::cerr << "Invalid input" << std::endl;
 	else
+	{
 		std::cout << "first name : " << contact[contact_number_2].get_first_name() << std::endl;
 		std::cout << "last name : " << contact[contact_number_2].get_last_name() << std::endl;
 		std::cout << "nickname : " << contact[contact_number_2].get_nickname() << std::endl;
-		std::cout << "secret : " << contact[contact_number_2].get_secret() << std::endl;
 		std::cout << "phone number : " << contact[contact_number_2].get_phone_number() << std::endl;
+		std::cout << "secret : " << contact[contact_number_2].get_secret() << std::endl;
+	}
 }
 
 void	PhoneBook::display_contact() const
@@ -104,7 +106,7 @@ void	PhoneBook::display_contact() const
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
 
-	for (int i = 0; i < 8; i++)
+	for (size_t i = 0; i < 8; i++)
 	{
 		std::cout << '|' << std::setw(10) << i;
 		std::cout << '|' << std::setw(10) << contact[i].get_first_name();

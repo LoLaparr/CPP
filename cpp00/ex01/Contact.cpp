@@ -29,7 +29,7 @@ int	Contact::set_first_name(std::string	first_name)
 {
 	if (first_name == "")
 		return (1);
-	for	(int i = 0; i < first_name.length(); i++)
+	for	(size_t i = 0; i < first_name.length(); i++)
 	{
 		if (!isalpha(first_name[i]))
 		{
@@ -52,7 +52,7 @@ int	Contact::set_last_name(std::string last_name)
 {
 	if (last_name == "")
 		return (1);
-	for (int i = 0; i < last_name.length(); i++)
+	for (size_t i = 0; i < last_name.length(); i++)
 	{
 		if (!isalpha(last_name[i]))
 		{
@@ -75,7 +75,7 @@ int	Contact::set_nickname(std::string nickname)
 {
 	if (nickname == "")
 		return (1);
-	for (int i = 0; i < nickname.length(); i++)
+	for (size_t i = 0; i < nickname.length(); i++)
 	{
 		if (!isalpha(nickname[i]))
 		{
@@ -98,7 +98,7 @@ int	Contact::set_phone_number(std::string phone_number)
 {
 	if (phone_number == "")
 		return (1);
-	for (int i = 0; i < phone_number.length(); i++)
+	for (size_t i = 0; i < phone_number.length(); i++)
 		if (!isdigit(phone_number[i]))
 			return (1);
 	if (phone_number.length() > 10)
@@ -114,7 +114,7 @@ int	Contact::set_secret(std::string darkest_secret)
 {
 	if (darkest_secret == "")
 		return (1);
-	for (int i = 0; i < darkest_secret.length(); i++)
+	for (size_t i = 0; i < darkest_secret.length(); i++)
 		if (isdigit(darkest_secret[i]))
 			return (1);
 	if (darkest_secret.length() > 10)
