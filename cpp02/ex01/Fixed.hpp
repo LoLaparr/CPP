@@ -1,54 +1,25 @@
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <cmath>
 
-class Fixed
-{
+class Fixed {
 private:
-	int	_entier;
+	int _value;
 	static const int _fractionalBits = 8;
+
 public:
+
 	Fixed();
-	Fixed(int value);
-	Fixed(float value);
+	Fixed(const Fixed& other);
+	Fixed(const int value);
+	Fixed(const float value);
 	~Fixed();
-	float	toFloat( void ) const;
-	int		toInt( void ) const;
-	Fixed&	operator<<();
+
+	float toFloat() const;
+	int toInt() const;
+
+	Fixed &operator=(const Fixed &other);
 };
 
-Fixed&	Fixed::operator<<()
-{
-}
-
-float	toFloat( void) const
-{
-
-}
-
-int	toInt( void ) const
-{
-
-}
-
-Fixed::Fixed(int value)
-{
-
-}
-
-Fixed::Fixed(float value)
-{
-
-}
-
-Fixed::Fixed()
-{
-	std::cout << "Constructor called" << std::endl;
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
-
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);

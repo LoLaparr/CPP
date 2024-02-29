@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:55:37 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/20 17:39:00 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:23:51 by louislaparr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed
 {
 private:
-	int	_entier;
+	int	_value;
 	static const int	_fractionalBits = 8;
 public:
 	Fixed();
