@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 10:55:37 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:57 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/06 18:53:58 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/06 19:19:38 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "ClapTrap.hpp"
 
-class Fixed
+class FragTrap : public ClapTrap
 {
 private:
-	int	_value;
-	static const int	_fractionalBits = 8;
-
+	std::string			_name;
+	int					_hitPoints;
+	int					_energyPoints;
+	int					_attackDamage;
 public:
+	FragTrap();
+	FragTrap(std::string name);
+	FragTrap(const FragTrap& other);
+	~FragTrap();
 
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
+	void	attack(const std::string& target);
+	void	highFivesGuys(void);
 
-	Fixed& operator=(const Fixed& other);
-	
-	void setRawBits( int const raw );
-	int getRawBits( void ) const;
+	FragTrap &operator=(const FragTrap &other);
 };

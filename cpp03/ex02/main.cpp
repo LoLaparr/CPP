@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 10:55:37 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:57 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/06 19:12:53 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/06 19:21:02 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-#include <iostream>
-#include <string>
-
-class Fixed
+int main( void )
 {
-private:
-	int	_value;
-	static const int	_fractionalBits = 8;
+	ScavTrap scav("Odin");
+	scav.attack("target");
+	scav.takeDamage(10);
+	scav.beRepaired(10);
+	scav.guardGate();
 
-public:
+	FragTrap frag("Thor");
+	frag.attack("target");
+	frag.takeDamage(10);
+	frag.beRepaired(10);
+	frag.highFivesGuys();
 
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
-
-	Fixed& operator=(const Fixed& other);
-	
-	void setRawBits( int const raw );
-	int getRawBits( void ) const;
-};
+	return (0);
+}

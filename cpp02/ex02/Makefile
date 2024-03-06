@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+         #
+#    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/02/27 16:35:31 by louislaparr      ###   ########.fr        #
+#    Updated: 2024/02/29 15:26:01 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all:	${NAME}
 ${NAME}:	${OBJ}
 
 	@${CC} ${CPPFLAGS} -I${INC} ${OBJ} -o ${NAME}
-	@echo "${Green}- ${NAME} is ready.${NC}"
+	@echo "${Green}- ${NAME} is ready."
 
 clean:
 	rm -f ${OBJ}

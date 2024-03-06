@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 10:55:37 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:57 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/06 17:41:25 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/06 18:32:03 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "ClapTrap.hpp"
 
-class Fixed
+class ScavTrap : public ClapTrap
 {
 private:
-	int	_value;
-	static const int	_fractionalBits = 8;
-
+	std::string			_name;
+	int					_hitPoints;
+	int					_energyPoints;
+	int					_attackDamage;
 public:
+	ScavTrap();
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap& other);
+	~ScavTrap();
 
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
+	void attack(const std::string& target);
+	void guardGate();
 
-	Fixed& operator=(const Fixed& other);
-	
-	void setRawBits( int const raw );
-	int getRawBits( void ) const;
+	ScavTrap &operator=(const ScavTrap &other);
 };

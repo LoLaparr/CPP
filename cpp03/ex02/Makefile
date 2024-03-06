@@ -6,18 +6,20 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/02/29 15:25:49 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/03/06 19:20:00 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Green=\033[0;32m
 
-NAME = Fixed
+NAME = FragTrap
 
 CC = c++
 
 SRC =	main.cpp \
-		Fixed.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp
 
 OBJ = ${SRC:.cpp=.o}
 DEPS = ${SRC:.cpp=.d}

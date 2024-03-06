@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 10:55:37 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/02/29 15:22:57 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/06 17:52:47 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/06 18:33:33 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-#include <iostream>
-#include <string>
-
-class Fixed
+int	main(void)
 {
-private:
-	int	_value;
-	static const int	_fractionalBits = 8;
+	ScavTrap	scaav;
 
-public:
-
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
-
-	Fixed& operator=(const Fixed& other);
-	
-	void setRawBits( int const raw );
-	int getRawBits( void ) const;
-};
+	ScavTrap scav("Odin");
+	ScavTrap scav2("Floki");
+	scaav = scav;
+	scav.attack("Floki");
+	scav2.takeDamage(500);
+	scav2.beRepaired(10);
+	scav2.guardGate();
+	return (0);
+}
