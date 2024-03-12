@@ -8,6 +8,7 @@ private:
 
 public:
 	Cat();
+	Cat(const Cat& other);
 	~Cat();
 
 	void	makeSound(void) const;
@@ -16,6 +17,12 @@ public:
 Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Constructor Cat called" << std::endl;
+}
+
+Cat::Cat(const Cat& other)
+{
+	std::cout << "Copy constructor Cat called" << std::endl;
+	*this = other;
 }
 
 Cat::~Cat()

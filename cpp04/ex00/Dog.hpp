@@ -8,6 +8,7 @@ private:
 
 public:
 	Dog();
+	Dog(const Dog& other);
 	~Dog();
 
 	void	makeSound(void) const;
@@ -16,6 +17,12 @@ public:
 Dog::Dog() : Animal("Dog")
 {
 	std::cout << "Constructor Dog called" << std::endl;
+}
+
+Dog::Dog(const Dog& other)
+{
+	std::cout << "Copy constructor Dog called" << std::endl;
+	*this = other;
 }
 
 Dog::~Dog()
