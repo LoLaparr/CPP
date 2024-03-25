@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+         #
+#    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/03/12 12:32:56 by louislaparr      ###   ########.fr        #
+#    Updated: 2024/03/25 14:51:25 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,11 @@ NAME = Animal
 CC = c++
 
 SRC =	main.cpp \
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
 
 
 OBJ = ${SRC:.cpp=.o}

@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 15:16:03 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/03/25 17:57:07 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/25 18:22:14 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/25 18:23:18 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 private:
 	Brain *_brains;

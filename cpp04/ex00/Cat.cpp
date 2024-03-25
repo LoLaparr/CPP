@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 15:16:03 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/03/25 17:57:07 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/03/25 14:47:04 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/25 14:56:18 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
 #include "Animal.hpp"
-#include "Brain.hpp"
+#include "Cat.hpp"
 
-class Dog : public Animal
+Cat::Cat() : Animal("Cat")
 {
-private:
-	Brain *_brains;
-public:
-	Dog();
-	Dog(const Dog& other);
-	~Dog();
+	std::cout << "Constructor Cat called" << std::endl;
+}
 
-	void	makeSound(void) const;
-	Brain	*getBrain() const;
+Cat::Cat(const Cat& other)
+{
+	std::cout << "Copy constructor Cat called" << std::endl;
+	*this = other;
+}
 
-	Dog	&operator=(const Dog& other);
-};
+Cat::~Cat()
+{
+	std::cout << "Destructor Animal Cat called" << std::endl;
+}
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "Meow!" << std::endl;
+}

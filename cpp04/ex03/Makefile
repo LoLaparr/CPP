@@ -6,23 +6,17 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/03/25 17:59:26 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/03/12 19:17:35 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Green=\033[0;32m
 
-NAME = Brain
+NAME = Animal
 
 CC = c++
 
 SRC =	main.cpp \
-		Animal.cpp \
-		Brain.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp
 
 
 OBJ = ${SRC:.cpp=.o}

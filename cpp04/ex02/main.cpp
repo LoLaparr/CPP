@@ -6,11 +6,11 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:15:17 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/03/25 18:12:24 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/03/25 18:12:08 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <cstdlib>
@@ -21,11 +21,11 @@
 
 int main(void)
 {
-	Animal* dogo = new Dog();
+	AAnimal* dogo = new Dog();
 	
 	std::cout << std::endl;
 
-	Animal* cato = new Cat();
+	AAnimal* cato = new Cat();
 
 	std::cout << std::endl;
 
@@ -47,7 +47,7 @@ int main(void)
 	std::cout << "-------------------------------------------" << std::endl;
 	std::cout << std::endl;
 
-	Animal* zoo[NBR_ANIMALS];
+	AAnimal* zoo[NBR_ANIMALS];
 
 	for (size_t i = 0; i < 2; i += 1) {
 		zoo[i] = new Dog();

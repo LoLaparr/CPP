@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/25 15:16:07 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/25 17:56:34 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -16,43 +29,3 @@ public:
 
 	Cat	&operator=(const Cat& other);
 };
-
-Cat::Cat() : Animal("Cat")
-{
-	std::cout << "Constructor Cat called" << std::endl;
-	this->_brains = new Brain;
-}
-
-Cat::Cat(const Cat& other)
-{
-	std::cout << "Copy constructor Cat called" << std::endl;
-	this->_type = other._type;
-	this->_brains = new Brain;
-}
-
-Cat::~Cat()
-{
-	std::cout << "Destructor Cat called" << std::endl;
-	if (this->_brains)
-		delete this->_brains;
-}
-
-void	Cat::makeSound(void) const
-{
-	std::cout << "Meow!" << std::endl;
-}
-
-Brain	*Cat::getBrain() const
-{
-	return (this->_brains);
-}
-
-Cat	&Cat::operator=(const Cat& other)
-{
-	std::cout << "Brain assignation operator called" << std::endl;
-	if (this != &other)
-	{
-		*this = other;
-	}
-	return (*this);
-}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/25 14:36:05 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/25 14:47:36 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include "Animal.hpp"
@@ -13,24 +25,3 @@ public:
 
 	void	makeSound(void) const;
 };
-
-Cat::Cat() : Animal("Cat")
-{
-	std::cout << "Constructor Cat called" << std::endl;
-}
-
-Cat::Cat(const Cat& other)
-{
-	std::cout << "Copy constructor Cat called" << std::endl;
-	*this = other;
-}
-
-Cat::~Cat()
-{
-	std::cout << "Destructor Animal called" << std::endl;
-}
-
-void	Cat::makeSound(void) const
-{
-	std::cout << "Meow!" << std::endl;
-}

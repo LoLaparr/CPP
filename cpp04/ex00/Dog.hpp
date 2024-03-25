@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/25 14:36:09 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/25 14:48:16 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include "Animal.hpp"
@@ -13,24 +25,3 @@ public:
 
 	void	makeSound(void) const;
 };
-
-Dog::Dog() : Animal("Dog")
-{
-	std::cout << "Constructor Dog called" << std::endl;
-}
-
-Dog::Dog(const Dog& other)
-{
-	std::cout << "Copy constructor Dog called" << std::endl;
-	*this = other;
-}
-
-Dog::~Dog()
-{
-	std::cout << "Destructor Animal called" << std::endl;
-}
-
-void	Dog::makeSound(void) const
-{
-	std::cout << "Woof!" << std::endl;
-}
