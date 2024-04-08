@@ -6,17 +6,22 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/03/12 19:17:35 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/03/26 17:31:52 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Green=\033[0;32m
 
-NAME = Animal
+NAME = Materia
 
 CC = c++
 
 SRC =	main.cpp \
+		AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp
 
 
 OBJ = ${SRC:.cpp=.o}

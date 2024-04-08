@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/26 17:23:08 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/03/26 17:37:27 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 # include <iostream>
 # include <string>
-class AMateria;
 # include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
@@ -25,39 +38,3 @@ public:
 
 	AMateria			&operator=(const AMateria &other);
 };
-
-AMateria::AMateria(const std::string &type): type(type), xp(0)
-{
-}
-
-AMateria::AMateria(const AMateria &other)
-{
-	*this = other;
-}
-
-AMateria::~AMateria()
-{
-}
-
-const std::string &AMateria::getType(void) const
-{
-	return (this->type);
-}
-
-unsigned int AMateria::getXP(void) const
-{
-	return (this->xp);
-}
-
-void AMateria::use(ICharacter &target)
-{
-	(void)target;
-	this->xp += 10;
-}
-
-AMateria &AMateria::operator=(const AMateria &other)
-{
-	this->xp = other.getXP();
-	this->type = other.getType();
-	return (*this);
-}
