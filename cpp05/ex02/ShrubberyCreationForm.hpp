@@ -4,8 +4,6 @@
 #include "AForm.hpp"
 #include <fstream>
 
-#define TREE
-
 class ShrubberyCreationForm : public AForm
 {
 private:
@@ -38,15 +36,22 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
+const char	*ShrubberyCreationForm::CanNotOpenOutfile::what() const throw()
+{
+	return("Fail to open the new file");
+}
+
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (GetSign() == 0)
+	if (GetSign() == false)
 		throw NotSignedException();
 	if (executor.GetGrade() > GetRequiredExec())
 		throw GradeTooLowException();
 	std::string fname = target + "_shrubbery";
 	std::cout << "Creating file with name: " << fname << std::endl;
 	std::ofstream newFile(fname.c_str());
+	if (newFile.fail())
+		throw ShrubberyCreationForm::CanNotOpenOutfile();
 	if (newFile.is_open())
 	{
 		newFile << "          &&& &&  & &&" << std::endl;
