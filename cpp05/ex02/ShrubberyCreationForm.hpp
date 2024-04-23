@@ -8,7 +8,7 @@ class ShrubberyCreationForm : public AForm
 {
 private:
 	ShrubberyCreationForm();
-	const std::string target;
+	const std::string _target;
 public:
 	ShrubberyCreationForm(const std::string &target);
 	ShrubberyCreationForm(const ShrubberyCreationForm &other);
@@ -24,7 +24,7 @@ public:
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 };
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("target", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 }
 
@@ -44,10 +44,10 @@ const char	*ShrubberyCreationForm::CanNotOpenOutfile::what() const throw()
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (GetSign() == false)
-		throw NotSignedException();
+		throw AForm::NotSignedException();
 	if (executor.GetGrade() > GetRequiredExec())
-		throw GradeTooLowException();
-	std::string fname = target + "_shrubbery";
+		throw AForm::GradeTooLowException();
+	std::string fname = _target + "_shrubbery";
 	std::cout << "Creating file with name: " << fname << std::endl;
 	std::ofstream newFile(fname.c_str());
 	if (newFile.fail())

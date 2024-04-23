@@ -17,10 +17,12 @@
 #include <string>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class AForm
 {
 private:
-	const std::string	_name;
+	std::string			_name;
 	bool				_signed;
 	const int			_requiredSign;
 	const int			_requiredExec;
@@ -45,7 +47,7 @@ public:
 	{
 		public:
 			virtual const char* what() const throw();
-	}
+	};
 
 	std::string			getName() const;
 	bool				GetSign() const;
@@ -55,12 +57,13 @@ public:
 	void	checkSign(int requiredSign);
 	void	checkExec(int requiredExec);
 
-	void	beSigned(Bureaucrat &bureaucrat);
+	void	beSigned(Bureaucrat& bureaucrat);
 
-	virtual void execute(const Bureaucrat& executor) const = 0;
+	virtual void execute(const Bureaucrat &executor) const = 0;
 
 	AForm &operator=(const AForm& other);
 };
+
 std::ostream &operator<<(std::ostream &out, const AForm &AForm);
 
 AForm::AForm() : _name("default"), _signed(false), _requiredSign(1), _requiredExec(1), _canI(false)
@@ -168,16 +171,17 @@ void	AForm::checkExec(int requiredExec) {
 	}
 }
 
-void	AForm::beSigned(Bureaucrat &bureaucrat) {
+void	AForm::beSigned(Bureaucrat& bureaucrat)
+{
 	if (this->_canI == false)
 	{
 		std::cout << "The grade dosen't exist to be sign" << std::endl;
 		return;
 	}
-	else if ((bureaucrat.GetGrade() <= this->GetRequiredSign()))
+	else if ((bureaucrat->GetGrade() <= this->GetRequiredSign()))
 	{
 		this->_signed = true;
-		bureaucrat.signAForm(this->getName(), this->_signed);
+		bureaucrat->signAForm(this->getName(), this->_signed);
 	}
 	else if (this->_signed == true)
 	{
@@ -186,7 +190,7 @@ void	AForm::beSigned(Bureaucrat &bureaucrat) {
 	}
 	else
 	{
-		bureaucrat.signAForm(this->getName(), this->_signed);
+		bureaucrat->signAForm(this->getName(), this->_signed);
 		throw AForm::GradeTooLowException();
 	}
 }
@@ -209,5 +213,5 @@ const char* AForm::GradeTooLowException::what(void) const throw() {
 }
 
 const char *AForm::NotSignedException::what(void) const throw() {
-		return("AForm was not signed");
+		return("AForm exception: AForm was not signed");
 }

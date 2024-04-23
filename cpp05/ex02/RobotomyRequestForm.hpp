@@ -24,7 +24,7 @@ RobotomyRequestForm::RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target, 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 }
 
@@ -50,7 +50,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 			std::cout << "Success " << this->GetTarget() << " has been robotomized" << std::endl;
 		else
 
-		++i;
+		++rand;
 	}
 }
 

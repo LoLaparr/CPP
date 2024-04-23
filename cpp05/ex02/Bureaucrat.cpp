@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Aform.hpp"
+#include "AForm.hpp"
 
 void	Bureaucrat::IncrementGrade()
 {
@@ -119,7 +119,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat& other)
 	return (*this);
 }
 
-void	Bureaucrat::signForm(std::string nameForm, bool sign) {
+void	Bureaucrat::signAForm(std::string nameForm, bool sign) {
 	if (sign == true)
 		std::cout << this->GetName() << " signed " << nameForm << std::endl;
 	else
