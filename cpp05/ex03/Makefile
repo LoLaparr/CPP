@@ -6,7 +6,7 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/04/25 16:58:11 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/04/25 18:33:28 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = c++
 
 SRC =	main.cpp \
 		Bureaucrat.cpp \
-		AForm.cpp
+		Form.cpp
 
 OBJ = ${SRC:.cpp=.o}
 DEPS = ${SRC:.cpp=.d}

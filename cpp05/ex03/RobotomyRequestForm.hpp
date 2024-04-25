@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
 private:
 	std::string _target;
@@ -25,11 +25,11 @@ RobotomyRequestForm::RobotomyRequestForm() /////////////////////////////////////
 	std::cout << "Constructor default RobotomyRequestForm called " << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << "Constructor with " << target << " RobotomyRequestForm called " << std::endl;
 }
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : Form(other)
 {
 	std::cout << "Copy constructor RobotomyRequestForm called" << std::endl;
 }
@@ -62,6 +62,6 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-	AForm::operator=(other);
+	Form::operator=(other);
 	return (*this);
 }

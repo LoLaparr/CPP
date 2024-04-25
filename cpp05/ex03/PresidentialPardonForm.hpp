@@ -1,9 +1,9 @@
 #pragma once
 
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
 private:
 	const std::string _target;
@@ -21,12 +21,12 @@ PresidentialPardonForm::PresidentialPardonForm()
 	std::cout << "Constructor default PresidentialPardonForm called " << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : Form("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << "Constructor with " << target << " PresidentialPardonForm called " << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm(other)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : Form(other)
 {
 	std::cout << "Copy constructor PresidentialPardonForm called" << std::endl;
 }
@@ -40,9 +40,9 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	executor.executeForm(*this);
 	if (GetSign() == false)
-		throw AForm::NotSignedException();
+		throw Form::NotSignedException();
 	if (executor.GetGrade() > GetRequiredExec())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

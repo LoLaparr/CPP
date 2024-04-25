@@ -15,9 +15,9 @@
 #include <iostream>
 #include <exception>
 #include <string>
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -49,8 +49,8 @@ public:
 	void	IncrementGrade();
 	void	DecrementGrade();
 
-	void	signAForm(std::string, bool);
-	void	executeForm(AForm const &Form) const;
+	void	signForm(std::string, bool);
+	void	executeForm(Form const &Form) const;
 
 	Bureaucrat &operator=(const Bureaucrat& other);
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*   Form.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+        */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:27:02 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/04/12 19:26:20 by louislaparr      ###   ########.fr       */
+/*   Updated: 2024/04/25 18:07:37 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
 private:
 	std::string			_name;
@@ -29,11 +29,11 @@ private:
 	const int			_requiredExec;
 	bool				_canI;
 public:
-	AForm();
-	AForm(std::string name);
-	AForm(std::string name, int requiredSign, int requiredExec);
-	AForm(const AForm& other);
-	virtual ~AForm();
+	Form();
+	Form(std::string name);
+	Form(std::string name, int requiredSign, int requiredExec);
+	Form(const Form& other);
+	virtual ~Form();
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -62,7 +62,7 @@ public:
 
 	virtual void execute(const Bureaucrat &executor) const = 0;
 
-	AForm &operator=(const AForm& other);
+	Form &operator=(const Form& other);
 };
 
-std::ostream &operator<<(std::ostream &out, const AForm &AForm);
+std::ostream &operator<<(std::ostream &out, const Form &Form);

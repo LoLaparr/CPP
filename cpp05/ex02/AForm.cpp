@@ -67,7 +67,7 @@ AForm::~AForm()
 	std::cout << "Destructor "<< this->getName() << " AForm called " << std::endl;
 }
 
-const std::string	AForm::getName() const {
+std::string	AForm::getName() const {
 	return (this->_name);
 }
 
@@ -114,10 +114,10 @@ void	AForm::beSigned(Bureaucrat& bureaucrat)
 		std::cout << "The grade dosen't exist to be sign" << std::endl;
 		return;
 	}
-	else if ((bureaucrat->GetGrade() <= this->GetRequiredSign()))
+	else if ((bureaucrat.GetGrade() <= this->GetRequiredSign()))
 	{
 		this->_signed = true;
-		bureaucrat->signAForm(this->getName(), this->_signed);
+		bureaucrat.signAForm(this->getName(), this->_signed);
 	}
 	else if (this->_signed == true)
 	{
@@ -126,13 +126,13 @@ void	AForm::beSigned(Bureaucrat& bureaucrat)
 	}
 	else
 	{
-		bureaucrat->signAForm(this->getName(), this->_signed);
+		bureaucrat.signAForm(this->getName(), this->_signed);
 		throw AForm::GradeTooLowException();
 	}
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &AForm) {
-	out << std::endl << "Name: " << AForm.getName() << "\n"
+	out << std::endl << "Name: " << AForm.getName() << std::endl
 			<< "Signed: " << (AForm.GetSign() == true ? "yes" : "no") << std::endl
 			<< "Grade to sign: " << AForm.GetRequiredSign() << std::endl
 			<< "Grade to execute: " << AForm.GetRequiredExec() << std::endl

@@ -6,7 +6,7 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:15:16 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/04/08 23:14:02 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:53:09 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main() {
 	try {
 		Donald = new Bureaucrat("Donald", 150);
 		Joe = new Bureaucrat("Joe", 1);
-		simpleDoc = new Form("Simple Document", 1211, 1);
+		simpleDoc = new Form("Simple Document", 121, 1);
 		simpleDoc->beSigned(*Donald);
 		simpleDoc->beSigned(*Joe);
 	}

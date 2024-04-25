@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 #include <fstream>
 
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
 private:
 	const std::string _target;
@@ -29,12 +29,12 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 	std::cout << "Constructor default ShrubberyCreationForm called " << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << "Constructor with " << target << " ShrubberyCreationForm called " << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Form(other)
 {
 	std::cout << "Copy constructor ShrubberyCreationForm called" << std::endl;
 }
@@ -53,9 +53,9 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	executor.executeForm(*this);
 	if (GetSign() == false)
-		throw AForm::NotSignedException();
+		throw Form::NotSignedException();
 	if (executor.GetGrade() > GetRequiredExec())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	std::string fname = _target + "_shrubbery";
 	std::cout << "Creating file with name: " << fname << std::endl;
 	std::ofstream newFile(fname.c_str());
@@ -82,6 +82,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	AForm::operator=(other);
+	Form::operator=(other);
 	return (*this);
 }
