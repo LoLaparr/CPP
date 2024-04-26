@@ -7,13 +7,15 @@ class PresidentialPardonForm : public Form
 {
 private:
 	const std::string _target;
-public:
 	PresidentialPardonForm();
+public:
 	PresidentialPardonForm(const std::string target);
 	PresidentialPardonForm(const PresidentialPardonForm &other);
 	~PresidentialPardonForm();
 
 	void execute(Bureaucrat const &executor) const;
+
+	PresidentialPardonForm&	operator=(const PresidentialPardonForm &other);
 };
 
 PresidentialPardonForm::PresidentialPardonForm()
@@ -26,7 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target) : Form(
 	std::cout << "Constructor with " << target << " PresidentialPardonForm called " << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : Form(other)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : Form(other), _target(other._target)
 {
 	std::cout << "Copy constructor PresidentialPardonForm called" << std::endl;
 }
@@ -45,4 +47,11 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 		throw Form::GradeTooLowException();
 	else
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
+
+PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
+{
+	std::cout << "PresidentialPardonForm assignation operator called" << std::endl;
+	(void)other;
+	return (*this);
 }

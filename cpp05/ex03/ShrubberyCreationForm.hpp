@@ -8,8 +8,8 @@ class ShrubberyCreationForm : public Form
 {
 private:
 	const std::string _target;
-public:
 	ShrubberyCreationForm();
+public:
 	ShrubberyCreationForm(const std::string &target);
 	ShrubberyCreationForm(const ShrubberyCreationForm &other);
 	~ShrubberyCreationForm();
@@ -34,7 +34,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("
 	std::cout << "Constructor with " << target << " ShrubberyCreationForm called " << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Form(other)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Form(other), _target(other._target)
 {
 	std::cout << "Copy constructor ShrubberyCreationForm called" << std::endl;
 }
@@ -80,8 +80,9 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	}
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	Form::operator=(other);
+	std::cout << "ShrubberyCreationForm assignation operator called" << std::endl;
+	(void)other;
 	return (*this);
 }

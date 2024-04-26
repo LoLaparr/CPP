@@ -6,7 +6,7 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:48:09 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/04/25 18:36:33 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:08:24 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ public:
 	Intern();
 	Intern(const Intern &other);
 	~Intern();
+	class BadName : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
 
 	Form	*makeForm(const std::string& formName, const std::string& target);
 
@@ -63,22 +68,32 @@ Form*	Intern::makeForm(const std::string& formName, const std::string& target) {
 
 	Form *(*formFunct[])(const std::string target) = {&makeNewPresident, &makeNewRobotomy, &makeNewShrubbery};
 
-	for (size_t i = 0; i < 3; i++)
+
+	try
 	{
-		if (formNameTab[i] == formName)
+		for (size_t i = 0; i < 3; i++)
 		{
-			std::cout << "Intern creates " << formNameTab[i] << std::endl;
-			return (formFunct[i](target));
+			if (formNameTab[i] == formName)
+			{
+				std::cout << "Intern creates " << formNameTab[i] << std::endl;
+				return (formFunct[i](target));
+			}
 		}
+		throw Intern::BadName();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 	return (NULL);
 }
 
 Intern	&Intern::operator=(const Intern& other) {
-	std::cout << "Form assignation operator called" << std::endl;
-	if (this != &other)
-	{
-		this = &other;
-	}
+	std::cout << "Intern assignation operator called" << std::endl;
+	(void)other;
 	return (*this);
+}
+
+const char	*Intern::BadName::what(void) const throw() {
+	return ("Intern exception : Bad Name");
 }

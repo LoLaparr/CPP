@@ -62,7 +62,6 @@ public:
 
 	virtual void execute(const Bureaucrat &executor) const = 0;
 
-	Form &operator=(const Form& other);
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &Form);

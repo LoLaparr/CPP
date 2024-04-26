@@ -6,7 +6,7 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:15:16 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/04/25 18:33:16 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:07:49 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int	main() {
 	Bureaucrat *	Joe = new Bureaucrat("Joe", 10);
 	Bureaucrat *	Miguel = new Bureaucrat("Miguel", 65);
 	Intern *		nobody = new Intern();
-	Form *			shru = new ShrubberyCreationForm(*Joe);
-	Form *			robot = new RobotomyRequestForm(*Donald);
+	Form *			shru = new ShrubberyCreationForm("Joe");
+	Form *			robot = new RobotomyRequestForm("Donald");
 	Form *			ppf = NULL;
 
+	std::cout << std::endl;
 	try {
-		ppf = nobody->makeForm("presidentiaf pardon", *Miguel);
+		ppf = nobody->makeForm("PresidentialPardonForm", "Miguel");
 		robot->beSigned(*Miguel);
 		shru->beSigned(*Joe);
 		ppf->beSigned(*Joe);

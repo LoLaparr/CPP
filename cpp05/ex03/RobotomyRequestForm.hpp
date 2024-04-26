@@ -7,8 +7,8 @@ class RobotomyRequestForm : public Form
 {
 private:
 	std::string _target;
-public:
 	RobotomyRequestForm();
+public:
 	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
@@ -20,7 +20,7 @@ public:
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 };
 
-RobotomyRequestForm::RobotomyRequestForm() ///////////////////////////////////////
+RobotomyRequestForm::RobotomyRequestForm()
 {
 	std::cout << "Constructor default RobotomyRequestForm called " << std::endl;
 }
@@ -29,7 +29,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyReq
 {
 	std::cout << "Constructor with " << target << " RobotomyRequestForm called " << std::endl;
 }
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : Form(other)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : Form(other), _target(other._target)
 {
 	std::cout << "Copy constructor RobotomyRequestForm called" << std::endl;
 }
@@ -60,8 +60,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	}
 }
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
+RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
-	Form::operator=(other);
+	std::cout << "RobotomyRequestForm assignation operator called" << std::endl;
+	(void)other;
 	return (*this);
 }

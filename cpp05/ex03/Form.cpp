@@ -47,19 +47,9 @@ Form::Form(std::string name, int requiredSign, int requiredExec) : _name(name), 
 
 }
 
-Form	&Form::operator=(const Form& other) {
-	std::cout << "Form assignation operator called" << std::endl;
-	if (this != &other)
-	{
-		_signed = other.GetSign();
-	}
-	return (*this);
-}
-
 Form::Form(const Form& other) : _name(other.getName()), _requiredSign(other.GetRequiredSign()), _requiredExec(other.GetRequiredExec()), _canI(false)
 {
 	std::cout << "Copy constructor Form called " << std::endl;
-	*this = other;
 }
 
 Form::~Form()
