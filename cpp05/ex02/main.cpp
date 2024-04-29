@@ -6,7 +6,7 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:15:16 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/04/25 16:57:21 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:34:58 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main() {
 	AForm *			robot = new RobotomyRequestForm("Donald");
 	AForm *			president = new PresidentialPardonForm("Miguel");
 
+	std::cout << std::endl << std::endl;
+
 	try {
 		president->beSigned(*Joe);
 		president->execute(*Donald);
@@ -33,7 +35,7 @@ int	main() {
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
-
+	std::cout << std::endl << std::endl;
 	try
 	{
 		robot->beSigned(*Miguel);
@@ -43,21 +45,9 @@ int	main() {
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
-	try
-	{
-		shru->beSigned(*Joe);
-		shru->execute(*Donald);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << *president << std::endl;
-	std::cout << *robot << std::endl;
 	std::cout << *shru << std::endl;
 
+	delete president;
 	delete robot;
 	delete shru;
 	delete Miguel;
@@ -73,6 +63,7 @@ int	main() {
 	AForm *			Robot = new RobotomyRequestForm("Jack");
 	AForm *			President = new PresidentialPardonForm("Lucy");
 
+	std::cout << std::endl << std::endl;
 	try {
 		President->beSigned(*Lucy);
 		President->execute(*Jack);
@@ -80,7 +71,7 @@ int	main() {
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
-
+	std::cout << std::endl << std::endl;
 	try
 	{
 		Robot->beSigned(*Jack);
@@ -90,7 +81,7 @@ int	main() {
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
+	std::cout << std::endl << std::endl;
 	try
 	{
 		Shrubbery->beSigned(*Martin);
@@ -105,9 +96,10 @@ int	main() {
 	std::cout << *Robot << std::endl;
 	std::cout << *Shrubbery << std::endl;
 
-	delete robot;
-	delete shru;
-	delete Miguel;
-	delete Joe;
-	delete Donald;
+	delete Jack;
+	delete Martin;
+	delete Lucy;
+	delete Shrubbery;
+	delete Robot;
+	delete President;
 }
