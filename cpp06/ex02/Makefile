@@ -6,19 +6,18 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/04/29 16:37:20 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/06/03 14:23:31 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Green=\033[0;32m
 
-NAME = Bureaucrat
+NAME = base
 
 CC = c++
 
 SRC =	main.cpp \
-		Bureaucrat.cpp \
-		Form.cpp
+		Base.cpp
 
 OBJ = ${SRC:.cpp=.o}
 DEPS = ${SRC:.cpp=.d}
