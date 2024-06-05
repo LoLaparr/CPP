@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   B.hpp                                              :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 15:10:03 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/04 15:10:04 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/06/04 17:08:52 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/06/04 17:09:03 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Base.hpp"
+class Array
+{
+private:
 
-class B : public Base {};
+public:
+	Array();
+	~Array();
+};
+
+Array::Array()
+{
+}
+
+Array::~Array()
+{
+}

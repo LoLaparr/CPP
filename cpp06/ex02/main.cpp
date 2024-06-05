@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/04 15:10:22 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/06/04 15:35:45 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -5,11 +17,11 @@
 #include <cstdlib>
 #include <exception>
 #include <iostream>
+#include <unistd.h>
 
 Base	*generate()
 {
 	int	i;
-
 
 	i = rand() % 3;
 	if (i == 0)
@@ -79,6 +91,7 @@ int	main(void)
 {
 	Base	*ptr;
 
+	srand(time(NULL));
 	for (int i = 0; i < 4; i++)
 	{
 		ptr = generate();

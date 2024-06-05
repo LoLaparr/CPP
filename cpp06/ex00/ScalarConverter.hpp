@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/04 15:03:33 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/06/04 15:03:34 by lolaparr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -14,7 +26,7 @@ private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &other);
 	~ScalarConverter();
-	
+
 	ScalarConverter &operator=(const ScalarConverter &other);
 
 	Literals identify(std::string input);
