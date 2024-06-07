@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 17:08:52 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/04 17:09:03 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/06/05 18:00:44 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/06/06 16:35:23 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-class Array
-{
-private:
+#include <iostream>
+#include <string>
 
-public:
-	Array();
-	~Array();
-};
-
-Array::Array()
-{
-}
-
-Array::~Array()
-{
+template <typename T, typename U>
+void	iter(T *tab, int len, U funct) {
+	for (int i = 0; i < len; i++)
+		funct(tab[i]);
 }

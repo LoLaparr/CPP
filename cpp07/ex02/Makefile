@@ -6,13 +6,13 @@
 #    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/06/06 16:36:50 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/06/07 15:01:09 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Green=\033[0;32m
 
-NAME = iter
+NAME = array
 
 CC = c++
 

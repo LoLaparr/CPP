@@ -6,12 +6,14 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:08:32 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/04 15:08:33 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:29:10 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
+#include <limits.h>
+#include <cstdio>
+#include <cstdlib>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -36,6 +38,8 @@ Literals ScalarConverter::identify(std::string input) {
 		return (LITERAL);
 	if (input[i] == '+' || input[i] == '-')
 		i++;
+	if ((input[0] == '-' && (input.size() > 12)) || input.size() > 11)
+		return (INVALID);
 	while (isdigit(input[i]))
 		i++;
 	if (i >= 1) {
@@ -62,14 +66,15 @@ void ScalarConverter::fromChar(std::string input) {
 }
 
 void ScalarConverter::fromInt(std::string input) {
-	int theInt;
-	std::istringstream(input) >> theInt;
+	long long int theInt = std::atoll(input.c_str());
 
-	if (std::isprint(theInt))
-		std::cout << "char: '" << static_cast<char>(theInt) << "'" << std::endl;
+	if (theInt < INT_MIN || theInt > INT_MAX)
+		return;
+	if (theInt > 32 && theInt < 126)
+	std::cout << "char: '" << static_cast<char>(theInt) << "'" << std::endl;
 	else
 		std::cout << "char: Not displayable" << std::endl;
-	std::cout << "int: " << input << std::endl;
+	std::cout << "int: " << theInt << std::endl;
 	std::cout << "float: " << static_cast<float>(theInt) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(theInt) << ".0" << std::endl;
 }
