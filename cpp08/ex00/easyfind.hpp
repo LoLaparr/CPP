@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 16:34:18 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/10 09:37:17 by lolaparr         ###   ########.fr       */
+/*   Created: 2024/06/10 09:22:05 by lolaparr          #+#    #+#             */
+/*   Updated: 2024/06/10 09:23:17 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
 #include <iostream>
+#include <exception>
+#include <vector>
+#include <list>
 
-void print_char(char &c) {
-	std::cout << c;
-}
 
-int main() {
-	char arr[] = "Hello World!";
-
-	iter(arr, sizeof(arr), print_char);
-	std::cout << std::endl;
-}
