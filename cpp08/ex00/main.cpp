@@ -6,7 +6,38 @@
 /*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 09:22:01 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/10 09:22:02 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:54:16 by lolaparr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "easyfind.hpp"
+#include <iostream>
+#include <vector>
+
+int	main(void)
+{
+	std::vector<int> vec;
+	for (int i = 1; i <= 5; i++)
+	{
+		vec.push_back(i);
+	}
+	std::list<int> lst;
+	for (int i = 6; i <= 10; i++)
+	{
+		lst.push_back(i);
+	}
+	try
+	{
+		std::vector<int>::iterator it1 = easyfind(vec, 3);
+		std::cout << "Valeur trouvée à la position (vector) : " << std::distance(vec.begin(),
+				it1) << std::endl;
+		std::list<int>::iterator it2 = easyfind(lst, 1);
+		std::cout << "Valeur trouvée à la position (list) : " << std::distance(lst.begin(),
+				it2) << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Erreur : " << e.what() << std::endl;
+	}
+	return (0);
+}
