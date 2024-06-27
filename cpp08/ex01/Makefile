@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
+#    By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/06/19 15:08:20 by lolaparr         ###   ########.fr        #
+#    Updated: 2024/06/27 14:58:15 by louislaparr      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = Span
 CC = c++
 
 SRC =	main.cpp \
+		Span.cpp
 
 
 OBJ = ${SRC:.cpp=.o}

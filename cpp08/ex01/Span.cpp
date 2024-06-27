@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:20:10 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/25 19:39:30 by lolaparr         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:14:22 by louislaparr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 Span::Span() : _size(0) {
-
 }
 
 Span::Span(unsigned int size) : _size(size) {
@@ -23,31 +22,30 @@ Span::Span(unsigned int size) : _size(size) {
 Span::Span(const Span &other) {
 	if (this != &other) {
 		_size = other._size;
-		_vec = other.vec;
+		_vec = other._vec;
 	}
 }
 
 Span::~Span() {
-
 }
 
 Span &Span::operator=(const Span &other) {
 	if (this != &other) {
 		_size = other._size;
-		_vec = other.vec;
+		_vec = other._vec;
 	}
 	return (*this);
 }
 
 void	Span::addNumber(int number) {
-	if (vec.size() >= _size) {
+	if (_vec.size() >= _size) {
 		throw Span::tooManyStoredInt();
 	}
-	vec.push_back(number);
+	_vec.push_back(number);
 }
 
 int	Span::shortestSpan() {
-	if (vec.size() <= 1)
+	if (_vec.size() <= 1)
 		throw tooFewStoredInt();
 
 	std::vector<int> tmp = _vec;
