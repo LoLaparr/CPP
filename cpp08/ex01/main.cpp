@@ -3,25 +3,30 @@
 #include <iostream>
 #include <vector>
 
-typedef std::vector<int> oops;
+void	addNumberS(Span &sp) {
+	for (size_t i = 0; i < 500; i++) {
+		int it = rand() % 1000;
+		sp.addNumber(it);
+	}
+}
 
 int main() {
-	std::vector<int> numbers;
-	numbers.push_back(6);
-	numbers.push_back(3);
-	numbers.push_back(17);
-	numbers.push_back(9);
-	numbers.push_back(11);
-
-	Span sp(5);
+	Span sp(500);
 	try {
-		sp.addNumberS<oops>(numbers.begin(), numbers.end());
+		addNumberS(sp);
 	}
 	catch (std::exception e) {
 		std::cout << "List is full" << std::endl;
 	}
-	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+	try
+	{
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
 	return (0);
 }

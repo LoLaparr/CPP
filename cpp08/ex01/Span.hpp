@@ -6,7 +6,7 @@
 /*   By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:08:56 by lolaparr          #+#    #+#             */
-/*   Updated: 2024/06/27 15:10:40 by louislaparr      ###   ########.fr       */
+/*   Updated: 2024/06/28 14:53:04 by louislaparr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ public:
 	void	addNumber(int number);
 	int		shortestSpan();
 	int		longestSpan();
-
-	template <typename T>
-	void	addNumberS(typename T::iterator begin, typename T::iterator end) {
-		for (typename T::iterator i = begin; i != end; ++i) {
-			addNumber(*i);
-		}
-	}
 
 	class tooManyStoredInt : public std::exception
 	{
