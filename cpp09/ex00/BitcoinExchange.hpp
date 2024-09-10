@@ -12,89 +12,18 @@ private:
 	std::map<std::string, float> _exchange;
 
 public:
+	BitcoinExchange &operator=(const BitcoinExchange &other);
 	BitcoinExchange();
-	BitcoinExchange::BitcoinExchange(const BitcoinExchange &other): _exchange(other._exchange) {}
-	BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other);
+	BitcoinExchange(const BitcoinExchange &other): _exchange(other._exchange) {}
 	~BitcoinExchange();
 
-	void BitcoinExchange::loadDatabase(const std::string &filename);
-	void BitcoinExchange::processInputFile(const std::string &inputFilename);
+	void	loadDatabase(const std::string &filename);
+	void	processInputFile(const std::string &inputFilename);
+	float	getExchangeRate(const std::string &date) const;
+
+	void	isValidInput(const std::map<std::string, float>& _exchange);
+	bool	isValidValue(float value);
+	bool	isValidDate(const std::string &date);
+
+	std::map<std::string, float> getMap() const;
 };
-
-void BitcoinExchange::loadDatabase(const std::string &filename) {
-
-	std::ifstream	file(filename);
-	if (!file.is_open()) {
-		std::cerr << "Error: File couldn't open the file " << filename << std::endl;
-		return 1;
-	}
-	std::string	line;
-	while(std::getline(file, line)) {
-		std::string	date;
-		float rate;
-		std::stringstream	ss(line);
-
-		if (std::getline(ss, date, ',') && ss >> rate) {
-			_exchange[date] = rate;
-		}
-		else
-			std::cerr << "Bad line in " << filename << std::endl;
-	}
-	file.close();
-
-}
-
-void BitcoinExchange::processInputFile(const std::string &inputFilename) {
-	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
-	if (this != &other) {
-		_exchange = other._exchange;
-	}
-	return *this;
-}
-
-BitcoinExchange::BitcoinExchange()
-{
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-}
