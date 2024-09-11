@@ -28,7 +28,7 @@ catch(const std::exception& e) {
 
 void BitcoinExchange::loadDatabase(const std::string &filename) {
 
-	std::ifstream	file(filename);
+	std::ifstream	file(filename.c_str());
 	if (!file.is_open()) {
 		throw std::invalid_argument("Error: File couldn't open the file");
 	}
@@ -46,16 +46,10 @@ void BitcoinExchange::loadDatabase(const std::string &filename) {
 			throw std::invalid_argument("Error: Bad line in the file.csv");
 	}
 	file.close();
-	std::map<std::string, float>::iterator it;
- for (it = _exchange.begin(); it != _exchange.end(); ++it) {
-  std::cout << "Clé: " << it->first << ", Valeur: " << it->second << std::endl;
- }
-
-
 }
 
 void BitcoinExchange::processInputFile(const std::string &inputFilename) {
-	std::ifstream	inputFile(inputFilename);
+	std::ifstream	inputFile(inputFilename.c_str());
 
 	if(!inputFile.is_open()) {
 		throw std::invalid_argument("Error: File couldn't open the file");
@@ -149,6 +143,8 @@ void	BitcoinExchange::isValidInput(const std::map<std::string, float>& _exchange
 		if (!isValidDate(ite->first)) {
 		throw std::invalid_argument("Date invalide");
 		}
+
+	std::cout << ite->second << std::endl;
 
 	// Vérification de la validité de la valeur associée
 		if (!isValidValue(ite->second)) {

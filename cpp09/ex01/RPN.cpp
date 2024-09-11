@@ -1,7 +1,7 @@
 #include "RPN.hpp"
 #include <iostream>
 #include <sstream>
-
+#include <cstdlib>
 
 int RPN::evaluate(const std::string& expression) {
 	std::stack<int> stack;
@@ -25,7 +25,7 @@ int RPN::evaluate(const std::string& expression) {
 		} else {
             // Sinon, c'est un nombre, on l'empile
 			try {
-				int operand = std::stoi(token);
+				int operand = std::atoi(token.c_str());
 				stack.push(operand);
 			} catch (std::invalid_argument&) {
 				throw std::runtime_error("Erreur: entrée invalide");
