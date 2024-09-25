@@ -33,3 +33,14 @@ catch(const std::exception& e)
 
 	return 0;
 }
+
+/*
+
+espaces
+char in line
+les char dans les date
+les try/catch
+le main
+les return dans les try/catch du main
+
+*/
