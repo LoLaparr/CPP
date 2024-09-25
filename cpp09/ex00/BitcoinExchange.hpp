@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <climits>
 
 class BitcoinExchange
 {
@@ -22,6 +23,7 @@ public:
 	float	getExchangeRate(const std::string &date) const;
 
 	void	isValidInput(const std::map<std::string, float>& _exchange);
+	bool	isValidRate(float value);
 	bool	isValidValue(float value);
 	bool	isValidDate(const std::string &date);
 

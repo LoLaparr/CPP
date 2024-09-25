@@ -3,43 +3,33 @@
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char* argv[]) {
-    // Vérification du nombre d'arguments
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <database.csv> <input.txt>" << std::endl;
-        return 1;
-    }
+	if (argc != 2) {
+		std::cerr << "Usage: " << argv[0] << " <database.csv> <input.txt>" << std::endl;
+		return 1;
+	}
 
+	std::string inputFile = argv[1];
 
-/*
-faire une fonction qui parse input.txt et data.csv
-*/
-    std::string inputFile = argv[1];
-
-    // Créer une instance de BitcoinExchange
-    BitcoinExchange exchange;
-    // Charger la base de données des taux de change
+	BitcoinExchange exchange;
 try
 {
-    exchange.loadDatabase("data.csv");
+	exchange.loadDatabase("data.csv");
 }
 catch(const std::exception& e)
 {
-    std::cerr << e.what() << std::endl;
+	std::cerr << e.what() << std::endl;
 }
 
-    exchange.isValidInput(exchange.getMap());
-    // Traiter le fichier d'entrée
+	exchange.isValidInput(exchange.getMap());
+
 try
 {
-    exchange.processInputFile(inputFile);
+	exchange.processInputFile(inputFile);
 }
 catch(const std::exception& e)
 {
-    std::cerr << e.what() << std::endl;
+	std::cerr << e.what() << std::endl;
 }
 
-
-
-
-    return 0;
+	return 0;
 }

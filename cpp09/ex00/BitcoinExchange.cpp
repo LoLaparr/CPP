@@ -67,6 +67,12 @@ void BitcoinExchange::processInputFile(const std::string &inputFilename) {
 			float	rate = getExchangeRate(date);
 			float	bitcoinValue = rate * value;
 
+			if (isValidRate(value) == false) {
+				throw std::invalid_argument("Error: Invalid value for rate");
+			}
+			if (bitcoinValue < 0)
+				throw std::invalid_argument("Error: not a positive number");
+
 			std::cout << date << " => " << value << " = " << bitcoinValue << std::endl;
 		}
 		else
@@ -84,7 +90,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 bool BitcoinExchange::isValidDate(const std::string &date) {
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
-		return false; // Le format doit être "YYYY-MM-DD"
+		return false;
 	}
 
 	int year, month, day;
@@ -92,23 +98,19 @@ bool BitcoinExchange::isValidDate(const std::string &date) {
 
 	std::istringstream dateStream(date);
 
-	// Extraction des parties de la date
 	if (!(dateStream >> year >> dash1 >> month >> dash2 >> day) ||
 		dash1 != '-' || dash2 != '-') {
 			return false;
 	}
 
-	// Vérification de la validité de l'année, du mois et du jour
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
 		return false;
 	}
 
-	// Vérification du nombre de jours en fonction du mois
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
 		return false;
 	}
 
-	// Vérification pour février (année bissextile ou non)
 	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	if (month == 2) {
 		if (isLeapYear && day > 29) {
@@ -121,8 +123,18 @@ bool BitcoinExchange::isValidDate(const std::string &date) {
 	return true;
 }
 
+bool BitcoinExchange::isValidRate(float value) {
+	if (value >= 0.0f && value <= 1000.0f)
+		return true;
+	else
+		return false;
+}
+
 bool BitcoinExchange::isValidValue(float value) {
-	return value >= 0.0f && value <= 1000.0f;
+
+	if (value >= 2147483647.0f || value <= -2147483647.0f)
+		return false;
+	return value >= 0.0f && value <= 1000000000.0f;
 }
 
 void	BitcoinExchange::isValidInput(const std::map<std::string, float>& _exchange) {
@@ -136,19 +148,17 @@ void	BitcoinExchange::isValidInput(const std::map<std::string, float>& _exchange
 		std::map<std::string, float>::const_iterator ite = _exchange.find(it->first);
 
 		if (ite == _exchange.end()) {
-			throw std::invalid_argument("La date  n'existe pas dans la base de données.");
+			throw std::invalid_argument("Error: The date does not exist in the database.");
 		}
 
-	// Vérification de la validité de la date
 		if (!isValidDate(ite->first)) {
-		throw std::invalid_argument("Date invalide");
+		throw std::invalid_argument("Error: Invalid date");
 		}
 
-	std::cout << ite->second << std::endl;
+	// std::cout << ite->second << std::endl;
 
-	// Vérification de la validité de la valeur associée
 		if (!isValidValue(ite->second)) {
-			throw std::invalid_argument("Valeur invalide pour la date");
+			throw std::invalid_argument("Error: Invalid value for date");
 		}
 
 	}
