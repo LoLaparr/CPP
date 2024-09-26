@@ -26,11 +26,17 @@ catch(const std::exception& e) {
 	return 1.0f;
 }
 
+
+
 void BitcoinExchange::loadDatabase(const std::string &filename) {
 
 	std::ifstream	file(filename.c_str());
+
 	if (!file.is_open()) {
 		throw std::invalid_argument("Error: File couldn't open the file");
+	}
+	if (file.peek() == std::ifstream::traits_type::eof()) {
+		throw std::invalid_argument("Error: The file.csv is empty");
 	}
 	std::string	line;
 	getline(file, line);
@@ -39,7 +45,7 @@ void BitcoinExchange::loadDatabase(const std::string &filename) {
 		std::string	date;
 		float rate;
 
-		if (std::getline(ss, date, ',') && ss >> rate) {
+		if (std::getline(ss, date, '|') && ss >> rate) {
 			_exchange[date] = rate;
 		}
 		else
@@ -67,10 +73,15 @@ void BitcoinExchange::processInputFile(const std::string &inputFilename) {
 			float	rate = getExchangeRate(date);
 			float	bitcoinValue = rate * value;
 
-			if (isValidRate(value) == false) {
-				throw std::invalid_argument("Error: Invalid value for rate");
+			try
+			{
+				isValidRate(value); // need return false
 			}
-			if (bitcoinValue < 0)
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
+			if (bitcoinValue < 0) // try/catch to do
 				throw std::invalid_argument("Error: not a positive number");
 
 			std::cout << date << " => " << value << " = " << bitcoinValue << std::endl;
@@ -90,7 +101,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 bool BitcoinExchange::isValidDate(const std::string &date) {
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
-		return false;
+		throw std::invalid_argument("Error: Invalid format of date");
 	}
 
 	int year, month, day;
@@ -100,23 +111,23 @@ bool BitcoinExchange::isValidDate(const std::string &date) {
 
 	if (!(dateStream >> year >> dash1 >> month >> dash2 >> day) ||
 		dash1 != '-' || dash2 != '-') {
-			return false;
+			throw std::invalid_argument("Error: Invalid format of date");
 	}
 
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
-		return false;
+		throw std::invalid_argument("Error: Invalid date");
 	}
 
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
-		return false;
+		throw std::invalid_argument("Error: Invalid date");
 	}
 
 	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	if (month == 2) {
 		if (isLeapYear && day > 29) {
-			return false;
+			throw std::invalid_argument("Error: Invalid date");
 		} else if (!isLeapYear && day > 28) {
-			return false;
+			throw std::invalid_argument("Error: Invalid date");
 		}
 	}
 
@@ -127,12 +138,12 @@ bool BitcoinExchange::isValidRate(float value) {
 	if (value >= 0.0f && value <= 1000.0f)
 		return true;
 	else
-		return false;
+		throw std::invalid_argument("Error: Invalid value for rate");
 }
 
 bool BitcoinExchange::isValidValue(float value) {
 
-	if (value >= 2147483647.0f || value <= -2147483647.0f)
+	if (value >= 2147483648.0f || value <= -2147483647.0f)
 		return false;
 	return value >= 0.0f && value <= 1000000000.0f;
 }
@@ -151,11 +162,14 @@ void	BitcoinExchange::isValidInput(const std::map<std::string, float>& _exchange
 			throw std::invalid_argument("Error: The date does not exist in the database.");
 		}
 
-		if (!isValidDate(ite->first)) {
-		throw std::invalid_argument("Error: Invalid date");
+		std::cout << ite->first << std::endl;
+		try {
+			isValidDate(ite->first);
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
 		}
 
-	// std::cout << ite->second << std::endl;
 
 		if (!isValidValue(ite->second)) {
 			throw std::invalid_argument("Error: Invalid value for date");
@@ -169,10 +183,6 @@ std::map<std::string, float> BitcoinExchange::getMap() const {
 	return this->_exchange;
 }
 
-BitcoinExchange::BitcoinExchange()
-{
-}
+BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::~BitcoinExchange()
-{
-}
+BitcoinExchange::~BitcoinExchange() {}
