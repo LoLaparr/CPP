@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: louislaparre <louislaparre@student.42.f    +#+  +:+       +#+         #
+#    By: lolaparr <lolaparr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:52:45 by lolaparr          #+#    #+#              #
-#    Updated: 2024/07/10 15:44:26 by louislaparr      ###   ########.fr        #
+#    Updated: 2024/09/27 15:19:35 by lolaparr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ DEPS = ${SRC:.cpp=.d}
 
 INC = ./includes
 
-CPPFLAGS = -Wall -Wextra -Werror -g3 -MMD -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 
 .cpp.o:
 	${CC} ${CPPFLAGS} -I${INC} -c $< -o ${<:.cpp=.o}

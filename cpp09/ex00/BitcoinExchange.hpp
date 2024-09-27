@@ -18,14 +18,15 @@ public:
 	BitcoinExchange(const BitcoinExchange &other): _exchange(other._exchange) {}
 	~BitcoinExchange();
 
+	void	isValidInput(const std::map<std::string, float>& _exchange);
+	bool	isValidRate(float value) const;
+	bool	isValidValue(float value);
+	bool	isValidDate(const std::string &date);
+
 	void	loadDatabase(const std::string &filename);
 	void	processInputFile(const std::string &inputFilename);
 	float	getExchangeRate(const std::string &date) const;
 
-	void	isValidInput(const std::map<std::string, float>& _exchange);
-	bool	isValidRate(float value);
-	bool	isValidValue(float value);
-	bool	isValidDate(const std::string &date);
 
 	std::map<std::string, float> getMap() const;
 };
